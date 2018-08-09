@@ -1,18 +1,18 @@
 * LeetCode
 
-** Questions
+** Using JavaScript
 
-|  # | Title                                          | Lang       | Difficulty | Category   | Status   |
+|  # | Title                                          | Language   | Difficulty | Category   | Status   |
 |----+------------------------------------------------+------------+------------+------------+----------|
-|  1 | Two Sum                                        | JavaScript | Medium     | Algorithms | Finished |
-|  2 | Add Two Numbers                                | JavaScript | Medium     | Algorithms | Finished |
-|  3 | Longest Substring Without Repeating Characters | JavaScript | Medium     | Algorithms | Finished |
-|  4 | Median of Two Sorted Arrays                    | JavaScript | Hard       | Algorithms | Finished |
-|  5 | Longest Palindromic Substring                  | JavaScript | Easy       | Algorithms | Finished |
-|  6 | ZigZag Conversion                              | JavaScript | Easy       | Algorithms | Finished |
-|  7 | Reverse Integer                                | JavaScript | Easy       | Algorithms | Finished |
-|  8 | String to Integer                              | JavaScript | Easy       | Algorithms | Finished |
-|  9 | Palindrome Number                              | JavaScript | Medium     | Algorithms | Finished |
+|  1 | Two Sum                                        | JavaScript | Medium     | Algorithms |          |
+|  2 | Add Two Numbers                                | JavaScript | Medium     | Algorithms |          |
+|  3 | Longest Substring Without Repeating Characters | JavaScript | Medium     | Algorithms |          |
+|  4 | Median of Two Sorted Arrays                    | JavaScript | Hard       | Algorithms |          |
+|  5 | Longest Palindromic Substring                  | JavaScript | Easy       | Algorithms |          |
+|  6 | ZigZag Conversion                              | JavaScript | Easy       | Algorithms |          |
+|  7 | Reverse Integer                                | JavaScript | Easy       | Algorithms |          |
+|  8 | String to Integer                              | JavaScript | Easy       | Algorithms |          |
+|  9 | Palindrome Number                              | JavaScript | Medium     | Algorithms |          |
 | 10 | Regular Expression Matching                    | JavaScript | Hard       | Algorithms | Pending  |
 | 11 | Container With Most Water	              | JavaScript | Medium     | Algorithms | Finished |
 | 12 | Integer to Roman                               | JavaScript | Medium     | Algorithms | Finished |
@@ -26,3 +26,37 @@
 | 20 | Valid Parentheses                              | JavaScript | Easy       | Algorithms | Finished |
 | 21 | Merge Two Sorted Lists                         | JavaScript | Easy       | Algorithms |          |
 | 22 | Generate Parentheses                           | JavaScript | Medium     | Algorithms |          |
+
+
+** Using Golang
+
+|  # | Title                                          | Language | Difficulty | Category   | Status   |
+|----+------------------------------------------------+----------+------------+------------+----------|
+|  1 | Two Sum                                        | Golang   | Medium     | Algorithms |          |
+|  2 | Add Two Numbers                                | Golang   | Medium     | Algorithms | Finished |
+|  3 | Longest Substring Without Repeating Characters | Golang   | Medium     | Algorithms | Finished |
+|  4 | Median of Two Sorted Arrays                    | Golang   | Hard       | Algorithms | Finished |
+|  5 | Longest Palindromic Substring                  | Golang   | Easy       | Algorithms | Finished |
+|  6 | ZigZag Conversion                              | Golang   | Easy       | Algorithms |          |
+|  7 | Reverse Integer                                | Golang   | Easy       | Algorithms | Finished |
+|  8 | String to Integer                              | Golang   | Easy       | Algorithms |          |
+|  9 | Palindrome Number                              | Golang   | Medium     | Algorithms | Finished |
+| 10 | Regular Expression Matching                    | Golang   | Hard       | Algorithms | Pending  |
+| 11 | Container With Most Water	              | Golang   | Medium     | Algorithms | Finished |
+| 12 | Integer to Roman                               | Golang   | Medium     | Algorithms | Finished |
+| 13 | Roman to Integer                               | Golang   | Easy       | Algorithms | Finished |
+
+** Using Java
+
+|  # | Title                                          | Language | Difficulty | Category   | Status   |
+|----+------------------------------------------------+----------+------------+------------+----------|
+|  1 | Two Sum                                        | Java     | Medium     | Algorithms |          |
+|  2 | Add Two Numbers                                | Java     | Medium     | Algorithms |          |
+|  3 | Longest Substring Without Repeating Characters | Java     | Medium     | Algorithms |          |
+|  4 | Median of Two Sorted Arrays                    | Java     | Hard       | Algorithms |          |
+|  5 | Longest Palindromic Substring                  | Java     | Easy       | Algorithms |          |
+|  6 | ZigZag Conversion                              | Java     | Easy       | Algorithms | Finished |
+|  7 | Reverse Integer                                | Java     | Easy       | Algorithms |          |
+|  8 | String to Integer                              | Java     | Easy       | Algorithms | Finished |
+|  9 | Palindrome Number                              | Java     | Medium     | Algorithms |          |
+| 10 | Regular Expression Matching                    | Java     | Hard       | Algorithms | Pending  |
