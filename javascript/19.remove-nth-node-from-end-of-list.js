@@ -43,5 +43,27 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
-    
+  var slow = head;
+  var fast = head;
+
+  while (n --) {
+    fast = fast.next;
+  }
+
+  if (!fast) {
+    return slow.next;
+  }
+
+  while (fast.next) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  if (slow && slow.next) {
+    slow.next = slow.next.next;
+  }
+
+  return head;
 };
+
+exports.removeNthFromEnd = removeNthFromEnd;

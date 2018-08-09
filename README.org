@@ -1,0 +1,28 @@
+* LeetCode
+
+** Questions
+
+|  # | Title                                          | Lang       | Difficulty | Category   | Status   |
+|----+------------------------------------------------+------------+------------+------------+----------|
+|  1 | Two Sum                                        | JavaScript | Medium     | Algorithms | Finished |
+|  2 | Add Two Numbers                                | JavaScript | Medium     | Algorithms | Finished |
+|  3 | Longest Substring Without Repeating Characters | JavaScript | Medium     | Algorithms | Finished |
+|  4 | Median of Two Sorted Arrays                    | JavaScript | Hard       | Algorithms | Finished |
+|  5 | Longest Palindromic Substring                  | JavaScript | Easy       | Algorithms | Finished |
+|  6 | ZigZag Conversion                              | JavaScript | Easy       | Algorithms | Finished |
+|  7 | Reverse Integer                                | JavaScript | Easy       | Algorithms | Finished |
+|  8 | String to Integer                              | JavaScript | Easy       | Algorithms | Finished |
+|  9 | Palindrome Number                              | JavaScript | Medium     | Algorithms | Finished |
+| 10 | Regular Expression Matching                    | JavaScript | Hard       | Algorithms | Pending  |
+| 11 | Container With Most Water	              | JavaScript | Medium     | Algorithms | Finished |
+| 12 | Integer to Roman                               | JavaScript | Medium     | Algorithms | Finished |
+| 13 | Roman to Integer                               | JavaScript | Easy       | Algorithms | Finished |
+| 14 | Longest Common Prefix                          | JavaScript | Easy       | Algorithms | Finished |
+| 15 | 3Sum                                           | JavaScript | Medium     | Algorithms | Finished |
+| 16 | 3Sum Closest                                   | JavaScript | Medium     | Algorithms | Finished |
+| 17 | Letter Combinations of a Phone Number          | JavaScript | Medium     | Algorithms | Finished |
+| 18 | 4Sum                                           | JavaScript | Medium     | Algorithms | Finished |
+| 19 | Remove Nth Node From End of List               | JavaScript | Easy       | Algorithms | Finished |
+| 20 | Valid Parentheses                              | JavaScript | Easy       | Algorithms | Finished |
+| 21 | Merge Two Sorted Lists                         | JavaScript | Easy       | Algorithms |          |
+| 22 | Generate Parentheses                           | JavaScript | Medium     | Algorithms |          |
