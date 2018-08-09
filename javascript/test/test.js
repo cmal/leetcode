@@ -139,3 +139,14 @@ describe('20', function() {
     })
   })
 });
+
+
+describe('2', function() {
+  var addTwoNumbers = require('../2.add-two-numbers.js').addTwoNumbers;
+  describe('#addTwoNumbers()', function() {
+    it ('should return correct result', function() {
+      addTwoNumbers([2,4,3], [5,6,4]).toString().should.equal([7,0,8].toString());
+      addTwoNumbers([2,4,3], [5,6,6]).toString().should.equal([7,0,0,1].toString());
+    })
+  })
+})
