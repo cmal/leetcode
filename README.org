@@ -4,13 +4,13 @@
 
 |  # | Title                                          | Language   | Difficulty | Category   | Status   |
 |----+------------------------------------------------+------------+------------+------------+----------|
-|  1 | Two Sum                                        | JavaScript | Medium     | Algorithms |          |
-|  2 | Add Two Numbers                                | JavaScript | Medium     | Algorithms |          |
-|  3 | Longest Substring Without Repeating Characters | JavaScript | Medium     | Algorithms |          |
+|  1 | Two Sum                                        | JavaScript | Medium     | Algorithms | Finished |
+|  2 | Add Two Numbers                                | JavaScript | Medium     | Algorithms | Finished |
+|  3 | Longest Substring Without Repeating Characters | JavaScript | Medium     | Algorithms | Finished |
 |  4 | Median of Two Sorted Arrays                    | JavaScript | Hard       | Algorithms |          |
 |  5 | Longest Palindromic Substring                  | JavaScript | Easy       | Algorithms |          |
-|  6 | ZigZag Conversion                              | JavaScript | Easy       | Algorithms |          |
-|  7 | Reverse Integer                                | JavaScript | Easy       | Algorithms |          |
+|  6 | ZigZag Conversion                              | JavaScript | Easy       | Algorithms | Finished |
+|  7 | Reverse Integer                                | JavaScript | Easy       | Algorithms | Finished |
 |  8 | String to Integer                              | JavaScript | Easy       | Algorithms |          |
 |  9 | Palindrome Number                              | JavaScript | Medium     | Algorithms |          |
 | 10 | Regular Expression Matching                    | JavaScript | Hard       | Algorithms | Pending  |
