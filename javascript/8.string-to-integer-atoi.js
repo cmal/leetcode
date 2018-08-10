@@ -86,5 +86,32 @@
  * @return {number}
  */
 var myAtoi = function(str) {
-    
+  var res = '';
+  var signParsed = false;
+  var numberParsed = false;
+  for (var i = 0; i < str.length; i ++) {
+    if (!signParsed && !numberParsed && str[i] == ' ') continue;
+    if (!signParsed && !numberParsed && (str[i] == '+' || str[i] == '-')) {
+      signParsed = true;
+      res += str[i];
+    } else if (str[i] >= '0' && str[i] <= '9') {
+      numberParsed = true;
+      res += str[i];
+    } else {
+      break;
+    }
+  }
+  var result;
+  if (res == '+' || res == '-') {
+    result = 0
+  } else {
+    result = +res;
+  }
+  if (result < 0) {
+    return Math.max(-Math.pow(2,31), result);
+  } else {
+    return Math.min(Math.pow(2,31) - 1, result);
+  }
 };
+
+exports.myAtoi = myAtoi;

@@ -204,5 +204,19 @@ describe('6', function() {
       convert("PAYPALISHIRING", 11).should.equal("PAYPALISGHNIIR");
     })
   })
+})
 
+describe('8', function() {
+  var myAtoi = require('../8.string-to-integer-atoi.js').myAtoi;
+
+  describe('#myAtoi()', function() {
+    it ('should conver to correct number', function() {
+      myAtoi('42').should.equal(42);
+      myAtoi('4193 with words').should.equal(4193);
+      myAtoi('-91283472332').should.equal(-2147483648);
+      myAtoi('+').should.equal(0);
+      myAtoi('+-2').should.equal(0);
+      myAtoi('0-1').should.equal(0);
+    })
+  })
 })
