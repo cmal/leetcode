@@ -150,3 +150,58 @@ describe('2', function() {
     })
   })
 })
+
+describe('3', function() {
+  var lengthOfLongestSubstring = require('../3.longest-substring-without-repeating-characters.js').lengthOfLongestSubstring;
+  describe('#lengthOfLongestSubstring()', function() {
+    it ('should return correct result', function() {
+      lengthOfLongestSubstring("abcabcbb").should.equal(3);
+      lengthOfLongestSubstring("bbbbb").should.equal(1);
+      lengthOfLongestSubstring("pwwkew").should.equal(3);
+    })
+  })
+})
+
+// describe('5', function() {
+//   var isPalindromic = require('../5.longest-palindromic-substring.js').isPalindromic;
+//   var longestPalindrome = require('../5.longest-palindromic-substring.js').longestPalindrome;
+//   describe('#isPalindromic()', function() {
+//     it ('should return correct result', function() {
+//       isPalindromic('').should.be.true;
+//       isPalindromic('a').should.be.true;
+//       isPalindromic('aa').should.be.true;
+//       isPalindromic('aba').should.be.true;
+//       isPalindromic('abba').should.be.true;
+//       isPalindromic('abb').should.be.false;
+//     })
+//   })
+//   describe('#longestPalindrome()', function() {
+//     it ('should return correct result', function() {
+//       longestPalindrome('').should.equal('');
+//       longestPalindrome('babad').should.equal('aba');
+//       longestPalindrome('baba').should.equal('aba');
+//       longestPalindrome('cbbd').should.equal('bb');
+//     })
+//   })
+// })
+
+
+describe('6', function() {
+  var getNumCols = require('../6.zigzag-conversion.js').getNumCols;
+  var convert = require('../6.zigzag-conversion.js').convert;
+
+  describe('#getNumCols()', function() {
+    it ('should return correct col nums', function() {
+      getNumCols(14, 4, 3).should.equal(7);
+      getNumCols(14, 6, 4).should.equal(7);
+    })
+  })
+
+  describe('#convert()', function() {
+    it ('should convert to correct string', function() {
+      convert("PAYPALISHIRING", 3).should.equal("PAHNAPLSIIGYIR");
+      convert("PAYPALISHIRING", 4).should.equal("PINALSIGYAHRPI");
+    })
+  })
+
+})

@@ -32,6 +32,32 @@
  * @param {string} s
  * @return {string}
  */
+
+var isPalindromic = function(s) {
+  var beg = 0;
+  var end = s.length - 1;
+  while (end > beg) {
+    if (s[beg] != s[end]) return false;
+    beg++;
+    end++;
+  }
+  return true;
+}
+
 var longestPalindrome = function(s) {
-    
+  if (s.length < 2) return s;
+  var beg = 0;
+  var end = 1;
+  var maxPalindrome = '';
+
+  while (end <= s.length) {
+    if (isPalindromic(s.slice(beg, end))) {
+      
+    }
+  }
+  
 };
+
+
+exports.isPalindromic = isPalindromic;
+exports.longestPalindrome = longestPalindrome;

@@ -26,5 +26,24 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    
+  if (!s.length || s.length == 1) return s;
+  var subs = s[0];
+  var pointer = 0;
+  var index;
+  var longestSubs = subs;
+  while (pointer < s.length) {
+    pointer ++;
+    index = subs.split('').indexOf(s[pointer]);
+    if (index == -1) {
+      subs += s[pointer];
+    } else {
+      if (longestSubs.length < subs.length) {
+        longestSubs = subs;
+      }
+      subs = subs.substring(index + 1) + s[pointer];
+    }
+  }
+  return longestSubs.length;
 };
+
+exports.lengthOfLongestSubstring = lengthOfLongestSubstring;

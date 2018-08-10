@@ -52,6 +52,53 @@
  * @param {number} numRows
  * @return {string}
  */
+
+var getNumCols = function (len, base, numRows) {
+  var groupCols = numRows - 1;
+  var numberOfGroup = parseInt(len / base);
+  var mod = len % base;
+  var residue = Math.max(1, mod - numRows + 1);
+  return groupCols * numberOfGroup + residue;
+}
+
 var convert = function(s, numRows) {
-    
-};
+  if (numRows == 1 || s.length <= numRows) return s;
+
+  var base = numRows + (numRows - 2);
+
+  // var numCols = getNumCols(s.length, base, numRows);
+
+  var obj = {};
+
+  var row = 0, col = 0;
+
+  for (var i = 0 ; i < s.length; i ++) {
+    obj[row + ',' + col] = s[i];
+    if (i % base < numRows - 1) {
+      row = (row + 1) % numRows;
+    } else {
+      row --;
+      col ++;
+    }
+  }
+
+  var res = [];
+
+  // for (var i = 0; i < numRows; i ++) {
+  //   for (var j = 0; j < numCols; j ++) {
+  //     var c = arr[i + ',' + j];
+  //     if (c) {
+  //       res += c;
+  //     }
+  //   }
+  // }
+
+  Object.keys(obj).sort().forEach(function(item) {
+    res.push(obj[item]);
+  });
+  
+  return res.join('');
+}
+
+exports.getNumCols = getNumCols;
+exports.convert = convert;
