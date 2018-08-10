@@ -201,6 +201,7 @@ describe('6', function() {
     it ('should convert to correct string', function() {
       convert("PAYPALISHIRING", 3).should.equal("PAHNAPLSIIGYIR");
       convert("PAYPALISHIRING", 4).should.equal("PINALSIGYAHRPI");
+      convert("PAYPALISHIRING", 11).should.equal("PAYPALISGHNIIR");
     })
   })
 

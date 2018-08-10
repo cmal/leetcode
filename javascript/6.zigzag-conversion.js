@@ -93,7 +93,17 @@ var convert = function(s, numRows) {
   //   }
   // }
 
-  Object.keys(obj).sort().forEach(function(item) {
+  Object.keys(obj).sort(function(a, b) {
+    var xyA = a.split(',');
+    var xyB = b.split(',');
+
+    if (xyA[0] == xyB[0]) {
+      return xyA[1] - xyB[1];
+    } else {
+      return xyA[0] - xyB[0];
+    }
+    
+  }).forEach(function(item) {
     res.push(obj[item]);
   });
   
