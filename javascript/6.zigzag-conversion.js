@@ -64,16 +64,14 @@ var getNumCols = function (len, base, numRows) {
 var convert = function(s, numRows) {
   if (numRows == 1 || s.length <= numRows) return s;
 
-  var base = numRows + (numRows - 2);
-
-  // var numCols = getNumCols(s.length, base, numRows);
-
-  var obj = {};
-
+  var base = numRows * 2 - 2;
+  var numCols = getNumCols(s.length, base, numRows);
+  // var numCols = s.length - numRows + 1;
+  var arr = [];
   var row = 0, col = 0;
 
   for (var i = 0 ; i < s.length; i ++) {
-    obj[row + ',' + col] = s[i];
+    arr[row * numCols + col] = s[i];
     if (i % base < numRows - 1) {
       row = (row + 1) % numRows;
     } else {
@@ -81,33 +79,7 @@ var convert = function(s, numRows) {
       col ++;
     }
   }
-
-  var res = [];
-
-  // for (var i = 0; i < numRows; i ++) {
-  //   for (var j = 0; j < numCols; j ++) {
-  //     var c = arr[i + ',' + j];
-  //     if (c) {
-  //       res += c;
-  //     }
-  //   }
-  // }
-
-  Object.keys(obj).sort(function(a, b) {
-    var xyA = a.split(',');
-    var xyB = b.split(',');
-
-    if (xyA[0] == xyB[0]) {
-      return xyA[1] - xyB[1];
-    } else {
-      return xyA[0] - xyB[0];
-    }
-    
-  }).forEach(function(item) {
-    res.push(obj[item]);
-  });
-  
-  return res.join('');
+  return arr.join('');
 }
 
 exports.getNumCols = getNumCols;
