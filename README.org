@@ -11,8 +11,8 @@
 |  5 | Longest Palindromic Substring                  | JavaScript | Easy       | Algorithms |          |
 |  6 | ZigZag Conversion                              | JavaScript | Easy       | Algorithms | Finished |
 |  7 | Reverse Integer                                | JavaScript | Easy       | Algorithms | Finished |
-|  8 | String to Integer                              | JavaScript | Easy       | Algorithms |          |
-|  9 | Palindrome Number                              | JavaScript | Medium     | Algorithms |          |
+|  8 | String to Integer                              | JavaScript | Easy       | Algorithms | Finished |
+|  9 | Palindrome Number                              | JavaScript | Medium     | Algorithms | Finished |
 | 10 | Regular Expression Matching                    | JavaScript | Hard       | Algorithms | Pending  |
 | 11 | Container With Most Water	              | JavaScript | Medium     | Algorithms | Finished |
 | 12 | Integer to Roman                               | JavaScript | Medium     | Algorithms | Finished |

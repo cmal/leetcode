@@ -38,52 +38,15 @@
  * @return {ListNode}
  */
 
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
-
-function add(d1, d2) {
-  if (d1 + d2 > 9) {
-    return [1, d1 + d2 - 10];
-  } else {
-    return [0, d1 + d2];
-  }
-}
-
-// var addTwoNumbers = function(l1, l2) {
-//   var sum;
-//   var head, curr;
-//   var carry = 0;
-//   while (l1) {
-//     sum = add(l1.val, l2.val + carry);
-//     carry = sum[0];
-//     if (!head) {
-//       head = new ListNode(sum[1]);
-//       curr = head;
-//     } else {
-//       curr.next = new ListNode(sum[1]);
-//       curr = curr.next;
-//     }
-//     l1 = l1.next;
-//     l2 = l2.next;
-//   }
-//   if (carry) {
-//     curr.next = new ListNode(sum[1]);
-//   }
-//   return head;
-// };
-
-
 var addTwoNumbers = function(l1, l2) {
   var sum;
   var res = [];
   var carry = 0;
 
   for (var i = 0; i < l1.length; i ++) {
-    sum = add(l1[i], l2[i] + carry);
-    carry = sum[0];
-    res.push(sum[1]);
+    sum = l1[i] + l2[i] + carry;
+    carry = parseInt(sum / 10);
+    res.push(sum % 10);
   }
   if (carry) {
     res.push(carry);

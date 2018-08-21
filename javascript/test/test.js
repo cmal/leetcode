@@ -80,6 +80,8 @@ describe('18', function() {
 //       isMatch('caaab', 'c.a*b').should.equal(true);
 //       isMatch('ccccacbbbbb', 'c*a.b*').should.equal(true);
 //       isMatch('ccccacbbbba', 'c*a.b*').should.equal(false);
+//       isMatch('asafsda', 'a.*a').should.equal(true);
+//       isMatch('asafsdadsffafsda', 'a.*a.*a').should.equal(true);
 //     })
 //   })
 // })
@@ -219,4 +221,93 @@ describe('8', function() {
       myAtoi('0-1').should.equal(0);
     })
   })
+})
+
+describe('21', function() {
+  var mergeTwoLists = require('../21.merge-two-sorted-lists.js').mergeTwoLists;
+
+  describe('#mergeTwoLists()', function() {
+    it ('should return correct result', function() {
+      mergeTwoLists([], []).toString().should.equal([].toString());
+      mergeTwoLists([1], []).toString().should.equal([1].toString());
+      mergeTwoLists([1], [1,2]).toString().should.equal([1,1,2].toString());
+      mergeTwoLists([1,2],[3,4]).toString().should.equal([1,2,3,4].toString());
+      mergeTwoLists([1,2,4],[1,3,4]).toString().should.equal([1,1,2,3,4,4].toString());
+    })
+  })
+})
+
+describe('qsort', function() {
+  var qsort = require('../algo.qsort.js').qsort;
+
+  describe('#qsort()', function() {
+    it ('should return correct result', function() {
+      qsort([]).toString().should.equal([].toString());
+      qsort([1]).toString().should.equal([1].toString());
+      qsort([1,2]).toString().should.equal([1,2].toString());
+      qsort([2,1]).toString().should.equal([1,2].toString());
+      qsort([3,1,2]).toString().should.equal([1,2,3].toString());
+      qsort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
+    })
+  })
+})
+
+describe('msort', function() {
+  var msort = require('../algo.msort.js').msort;
+  describe('#msort()', function() {
+    it ('should return correct result', function() {
+      msort([]).toString().should.equal([].toString());
+      msort([1]).toString().should.equal([1].toString());
+      msort([1,2]).toString().should.equal([1,2].toString());
+      msort([2,1]).toString().should.equal([1,2].toString());
+      msort([3,1,2]).toString().should.equal([1,2,3].toString());
+      msort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
+    })
+  })
+})
+
+describe('hsort', function() {
+  var parent = require('../algo.heapsort.js').parent;
+  var left = require('../algo.heapsort.js').left;
+  var right = require('../algo.heapsort.js').right;
+  var hsort = require('../algo.heapsort.js').hsort;
+
+  describe ('#parent()', function() {
+    it ('should return correct parent', function() {
+      parent(1).should.equal(0);
+      parent(2).should.equal(0);
+      parent(3).should.equal(1);
+      parent(4).should.equal(1);
+      parent(5).should.equal(2);
+      parent(6).should.equal(2);
+    })
+  });
+
+  describe ('#left()', function() {
+    it ('should return correct left child', function() {
+      left(0).should.equal(1);
+      left(1).should.equal(3);
+      left(2).should.equal(5);
+    })
+  });
+
+  describe ('#right()', function() {
+    it ('should return correct right child', function() {
+      right(0).should.equal(2);
+      right(1).should.equal(4);
+      right(2).should.equal(6);
+    })
+  })
+  
+  describe ('#hsort()', function() {
+    it ('should return correct result', function() {
+      hsort([]).toString().should.equal([].toString());
+      hsort([1]).toString().should.equal([1].toString());
+      hsort([1,2]).toString().should.equal([1,2].toString());
+      hsort([2,1]).toString().should.equal([1,2].toString());
+      hsort([3,1,2]).toString().should.equal([1,2,3].toString());
+      hsort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
+    }) 
+  })
+
 })
