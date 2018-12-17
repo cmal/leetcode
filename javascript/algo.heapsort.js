@@ -58,7 +58,7 @@ function buildHeap(arr) {
   }
 }
 
-function heapSinkKey(arr, k, v) {
+function heapSwimKey(arr, k, v) {
   arr[k] = v;
   var i = k;
   while(i > 0 && compare(arr, i, parent(i))) {
@@ -69,7 +69,7 @@ function heapSinkKey(arr, k, v) {
 
 function heapInsert(arr, x) {
   arr.push(0);
-  heapSinkKey(arr, arr.length, x);
+  heapSwimKey(arr, arr.length, x);
 }
 
 function heapTop(arr) {
