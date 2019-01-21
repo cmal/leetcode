@@ -248,6 +248,42 @@ describe('qsort', function() {
       qsort([2,1]).toString().should.equal([1,2].toString());
       qsort([3,1,2]).toString().should.equal([1,2,3].toString());
       qsort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
+      qsort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]).toString()
+        .should.equal([1, 1, 2, 2, 4, 8, 32, 43, 43, 55, 63, 92, 123, 123, 234, 345, 5643].toString());
+    })
+  })
+})
+
+describe('bsort', function() {
+  var bsort = require('../algo.bsort.js').bsort;
+
+  describe('#bsort()', function() {
+    it ('should return correct result', function() {
+      bsort([]).toString().should.equal([].toString());
+      bsort([1]).toString().should.equal([1].toString());
+      bsort([1,2]).toString().should.equal([1,2].toString());
+      bsort([2,1]).toString().should.equal([1,2].toString());
+      bsort([3,1,2]).toString().should.equal([1,2,3].toString());
+      bsort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
+      bsort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]).toString()
+        .should.equal([1, 1, 2, 2, 4, 8, 32, 43, 43, 55, 63, 92, 123, 123, 234, 345, 5643].toString());
+    })
+  })
+})
+
+describe('isort', function() {
+  var isort = require('../algo.isort.js').isort;
+
+  describe('#isort()', function() {
+    it ('should return correct result', function() {
+      isort([]).toString().should.equal([].toString());
+      isort([1]).toString().should.equal([1].toString());
+      isort([1,2]).toString().should.equal([1,2].toString());
+      isort([2,1]).toString().should.equal([1,2].toString());
+      isort([3,1,2]).toString().should.equal([1,2,3].toString());
+      isort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
+      isort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]).toString()
+        .should.equal([1, 1, 2, 2, 4, 8, 32, 43, 43, 55, 63, 92, 123, 123, 234, 345, 5643].toString());
     })
   })
 })
@@ -271,6 +307,7 @@ describe('hsort', function() {
   var left = require('../algo.heapsort.js').left;
   var right = require('../algo.heapsort.js').right;
   var hsort = require('../algo.heapsort.js').hsort;
+  var heapExtractTopRemanents = require('../algo.heapsort.js').heapExtractTopRemanents;
 
   describe ('#parent()', function() {
     it ('should return correct parent', function() {
@@ -310,4 +347,10 @@ describe('hsort', function() {
     }) 
   })
 
+  describe ('#heapExtractTopRemanents()', function() {
+    it ('should return correct result', function() {
+      heapExtractTopRemanents([1,2]).toString().should.equal([2].toString());
+      heapExtractTopRemanents([1,2,3]).toString().should.equal([3,2].toString());
+    })
+  })
 })

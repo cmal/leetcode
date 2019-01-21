@@ -17,19 +17,24 @@ function heapSort(arr, p, r) {
 
 function parent(i) {
   if (!i) return -1;
-  return parseInt((i - 1) / 2);
+  // return parseInt((i - 1) / 2);
+  return (i - 1) >> 1; // more readable
 }
 
 function left(i) {
-  return i * 2 + 1;
+  // return i * 2 + 1;
+  return 1 + (i << 1); // note << has low priority
 }
 
 function right(i) {
-  return 2 * (i + 1);
+  // return 2 * (i + 1);
+  return (i + 1) << 1;
 }
 
 function compare(a, b) {
-  return a > b;   // or a > b
+  // a < b for minHeap, sort asc
+  // a > b for maxHeap, sort desc
+  return a > b;
 }
 
 function swap(arr, i, j) {
@@ -38,7 +43,7 @@ function swap(arr, i, j) {
   arr[j] = tmp;
 }
 
-function heapify(arr, len, i) {
+function heapify(arr, len, i) { // heapSinkkey(arr, len, i)
   var l = left(i);
   var r = right(i);
   var pole = (l < len && compare(arr[l], arr[i])) ? l : i;
@@ -79,21 +84,21 @@ function heapTop(arr) {
 function heapExtractTop(arr) {
   var top = arr[0];
   arr[0] = arr[arr.length - 1];
-  heapify(arr, arr.length - 1, 0)
+  heapify(arr, arr.length, 0)
   return top;
 }
 
 function heapExtractTopRemanents(arr) {
   arr[0] = arr[arr.length -1];
   arr.pop();
-  heapify(arr, arr.length - 1, 0);
+  heapify(arr, arr.length, 0);
+  return arr;
 }
+
 
 exports.parent = parent;
 exports.left = left;
 exports.right = right;
-// exports.heapify = heapify;
-// exports.buildHeap = buildHeap;
 exports.heapTop = heapTop;
 exports.heapInsert = heapInsert;
 exports.heapExtractTop = heapExtractTop;
