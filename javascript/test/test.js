@@ -1,5 +1,6 @@
 var assert = require('assert');
-var should = require('chai').should()
+var should = require('chai').should();
+var fs = require('fs');
 
 describe('14', function() {
   var getMinLen = require('../14.longest-common-prefix.js').getMinLen;
@@ -325,7 +326,14 @@ describe('hsort', function() {
   var left = require('../algo.heapsort.js').left;
   var right = require('../algo.heapsort.js').right;
   var hsort = require('../algo.heapsort.js').hsort;
-  var heapExtractTopRemanents = require('../algo.heapsort.js').heapExtractTopRemanents;
+
+  // var heapExtractTopRemanents = require('../algo.heapsort.js').heapExtractTopRemanents;
+
+  var heapInsert = require('../algo.heapsort.js').heapInsert;
+  var heapExtractTop = require('../algo.heapsort.js').heapExtractTop;
+  var heapPop = heapExtractTop;
+  var heapTop = require('../algo.heapsort.js').heapTop;
+
 
   describe ('#parent()', function() {
     it ('should return correct parent', function() {
@@ -352,8 +360,49 @@ describe('hsort', function() {
       right(1).should.equal(4);
       right(2).should.equal(6);
     })
+  });
+
+  describe ('#heapInsert()', function() {
+    it ('should insert to heap', function() {
+      var arr = [];
+      heapInsert(arr, 97);
+      arr.toString().should.equal('97');
+      heapInsert(arr, 68);
+      arr.toString().should.equal('97,68');
+    });
   })
-  
+
+  describe('#heapExtractTop()', function() {
+    it ('should extract top element', function() {
+      var arr = [97];
+      heapExtractTop(arr).should.equal(97);
+      arr.toString().should.equal('');
+      heapInsert(arr, 97);
+      heapInsert(arr, 20);
+      arr.toString().should.equal('97,20');
+      heapExtractTop(arr).should.equal(97);
+      arr.toString().should.equal('20');
+      heapExtractTop(arr).should.equal(20);
+      arr.toString().should.equal('');
+
+      arr = [];
+      heapInsert(arr, 97);
+      heapPop(arr);
+      heapInsert(arr, 20);
+      heapPop(arr);
+      heapInsert(arr, 26);
+      heapInsert(arr, 20);
+      arr.toString().should.equal('26,20');
+      heapTop(arr).should.equal(26);
+      heapPop(arr);
+      heapInsert(arr, 91);
+      heapTop(arr).should.equal(91);
+
+      arr.toString().should.equal('91,20');
+      
+    })
+  })
+
   describe ('#hsort()', function() {
     it ('should return correct result', function() {
       hsort([]).toString().should.equal([].toString());
@@ -361,8 +410,10 @@ describe('hsort', function() {
       hsort([1,2]).toString().should.equal([1,2].toString());
       hsort([2,1]).toString().should.equal([1,2].toString());
       hsort([3,1,2]).toString().should.equal([1,2,3].toString());
-      hsort([4,5,6,1,2,3,9,8,7]).toString().should.equal([1,2,3,4,5,6,7,8,9].toString());
-    }) 
+      hsort([4,5,6,1,2,3,9,8,7]).toString()
+        .should.equal([1,2,3,4,5,6,7,8,9].toString());
+      hsort([-1,12,5,7,20,6]).toString().should.equal('-1,5,6,7,12,20');
+    })
   })
 
   describe ('#heapExtractTopRemanents()', function() {
@@ -372,3 +423,117 @@ describe('hsort', function() {
     })
   })
 })
+
+describe('dynamicProgramming', function() {
+  var maxProfit = require('../algo.dynamicProgramming.js').maxProfit;
+  describe('#maxProfit()', function() {
+    it ('should return correct result', function() {
+      maxProfit([1,2,3,4,0,2], 6).should.equal(5);
+      maxProfit([4,3,2,1,0,2], 6).should.equal(2);
+      maxProfit([4,3,2,1], 4).should.equal(0);
+      maxProfit([4,2,2,1], 4).should.equal(0);
+      maxProfit([4,2,3,1], 4).should.equal(1);
+      maxProfit([1,2,3,4,5,6], 6).should.equal(5);
+      maxProfit([4,3,2,1,8,9], 6).should.equal(8);
+      maxProfit([4,3,2,1,8,7], 6).should.equal(7);
+      maxProfit([0,3,2,1,8,7], 6).should.equal(10);
+      maxProfit([0,4,1,3,8,7], 6).should.equal(11);
+    })
+  })
+
+  var fibonacci = require('../algo.dynamicProgramming.js').fibonacci;
+  describe('#fibonacci()', function() {
+    it ('should return correct result', function() {
+      fibonacci(0).should.equal(1);
+      fibonacci(1).should.equal(1);
+      fibonacci(2).should.equal(2);
+      fibonacci(3).should.equal(3);
+      fibonacci(4).should.equal(5);
+      fibonacci(5).should.equal(8);
+      fibonacci(6).should.equal(13);
+      fibonacci(7).should.equal(21);
+      fibonacci(8).should.equal(34);
+      fibonacci(9).should.equal(55);
+      fibonacci(10).should.equal(89);
+      fibonacci(11).should.equal(144);
+      fibonacci(12).should.equal(233);
+      fibonacci(13).should.equal(377);
+      fibonacci(14).should.equal(610);
+      fibonacci(77).should.equal(8944394323791464);
+    })
+  })
+})
+
+
+describe('ipv4->integer', function() {
+
+  var ipv4 = require('../company.ipv4ToInt.js')
+  var ipv4ToInt = ipv4.ipv4ToInt;
+  var errInt8 = ipv4.errInt8;
+  var errSpace = ipv4.errSpace;
+  var errChar = ipv4.errChar;
+  var errOther = ipv4.errOther;
+
+  var checkError = function(f, s, err) {
+    (function() {
+      f(s)
+    }).should.throw(err);
+  }
+
+  describe('#ipv4ToInt()', function() {
+
+    it ('plain ipv4 string should return', function() {
+      ipv4ToInt('0.0.0.0').should.equal(0);
+      ipv4ToInt('00.00000.0.0000000').should.equal(0);
+      ipv4ToInt('172.168.5.1').should.equal(2896692481);
+      ipv4ToInt('255.255.255.255').should.equal(4294967295);
+    });
+
+    it ('invalid ipv4 string should throw', function() {
+      checkError(ipv4ToInt, '255.255.255.256', errInt8);
+      checkError(ipv4ToInt, '256.0.0.0', errInt8);
+      checkError(ipv4ToInt, '1.5.256.1', errInt8);
+    });
+
+    it ('space between a digit and a dot should return', function() {
+      ipv4ToInt(' 0.0.0.0').should.equal(0);
+      ipv4ToInt(' 0.0.0.0 ').should.equal(0);
+      ipv4ToInt(' 0  . 0   . 0 .  0   ').should.equal(0);
+      ipv4ToInt('172 . 168.5.1').should.equal(2896692481);
+      ipv4ToInt('172 . 168.  5 .  1 ').should.equal(2896692481);
+      ipv4ToInt('255.255.255.255 ').should.equal(4294967295);
+    });
+
+    it ('space between two digits should throw', function() {
+      checkError(ipv4ToInt, '1 72.168.5.1', errSpace);
+    });
+
+    it ('invalid character should throw', function() {
+      checkError(ipv4ToInt, '0.0.o.0', errChar);
+      checkError(ipv4ToInt, '0.0.-1.0', errChar);
+    });
+
+    it ('mix errors should throw the first', function() {
+      checkError(ipv4ToInt, '255.255.256.2 55', errInt8);
+      checkError(ipv4ToInt, '1 72.168.5.256', errSpace);
+      checkError(ipv4ToInt, '-1 72.168.5.256', errChar);
+    });
+
+    it ('mix errors should throw the first', function() {
+      checkError(ipv4ToInt, '255.255.256.2 55', errInt8);
+      checkError(ipv4ToInt, '1 72.168.5.256', errSpace);
+      checkError(ipv4ToInt, '0.0.o.0', errChar);
+    });
+
+    it ('other invalid string should throw', function() {
+      checkError(ipv4ToInt, '', errOther);
+      checkError(ipv4ToInt, '...', errOther);
+      checkError(ipv4ToInt, '.0.0.0', errOther);
+      checkError(ipv4ToInt, '.0.0.0.0', errOther);
+      checkError(ipv4ToInt, '0.0.0.0.', errOther);
+      checkError(ipv4ToInt, '0.0.0.', errOther);
+      checkError(ipv4ToInt, '0.0. .0', errOther);
+    });
+
+  });
+});

@@ -32,8 +32,13 @@ function right(i) {
 }
 
 function compare(a, b) {
+
   // a < b for minHeap, sort asc
   // a > b for maxHeap, sort desc
+
+  // for minheap, a < b
+  // for maxheap, a > b
+
   return a > b;
 }
 
@@ -66,14 +71,16 @@ function buildHeap(arr) {
 function heapSwimKey(arr, k, v) {
   arr[k] = v;
   var i = k;
-  while(i > 0 && compare(arr, i, parent(i))) {
+  while(i > 0 && compare(arr[i], arr[parent(i)])) {
     swap(arr, i, parent(i));
     i = parent(i);
   }
 }
 
 function heapInsert(arr, x) {
+
   arr.push(0);
+
   heapSwimKey(arr, arr.length, x);
 }
 
@@ -82,19 +89,23 @@ function heapTop(arr) {
 }
 
 function heapExtractTop(arr) {
+  if (arr.length == 1) {
+    return arr.pop();
+  }
   var top = arr[0];
-  arr[0] = arr[arr.length - 1];
-  heapify(arr, arr.length, 0)
+  arr[0] = arr.pop();
+  heapify(arr, arr.length - 1, 0)
   return top;
 }
 
-function heapExtractTopRemanents(arr) {
-  arr[0] = arr[arr.length -1];
-  arr.pop();
-  heapify(arr, arr.length, 0);
-  return arr;
-}
-
+// function heapExtractTopRemanents(arr) {
+//   if (arr.length == 1) {
+//     arr.pop();
+//   }
+//   arr[0] = arr[arr.length -1];
+//   arr.pop();
+//   heapify(arr, arr.length - 1, 0);
+// }
 
 exports.parent = parent;
 exports.left = left;
@@ -102,5 +113,7 @@ exports.right = right;
 exports.heapTop = heapTop;
 exports.heapInsert = heapInsert;
 exports.heapExtractTop = heapExtractTop;
-exports.heapExtractTopRemanents = heapExtractTopRemanents;
 exports.hsort = hsort;
+
+exports.heapPeek = heapTop;
+exports.heapPop = heapExtractTop;
