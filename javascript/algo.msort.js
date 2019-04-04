@@ -65,9 +65,9 @@ function merge(arr, p, q, r) {
   var j = 0;
   for (var k = p; k <= r; k ++) {
     if (a[i] <= b[j]) {
-      arr[k] = a[i++]
+      arr[k] = a[i++];
     } else {
-      arr[k] = b[j++]
+      arr[k] = b[j++];
     }
   }
 }
