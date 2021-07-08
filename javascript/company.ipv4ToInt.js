@@ -100,7 +100,7 @@ var digit2Int = function(c) {
  * @throw errInt8, errSpace, errOther
  */
 var ipv4FSMTransition = function(c, state) {
-  console.log('####', state, c)
+  // console.log('####', state, c)
   switch(c) {
 
   case '.': // DOT

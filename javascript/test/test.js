@@ -1,6 +1,21 @@
 var assert = require('assert');
 var should = require('chai').should();
 var fs = require('fs');
+var expect = require('chai').expect;
+
+var checkError = function(f, s, err) {
+  (function() {
+    f.apply(null, s);
+  }).should.throw(err);
+}
+
+var checkErrorWithThis = function(f, thisArg, s, err) {
+  (function() {
+    f.apply(thisArg, s);
+  }).should.throw(err);
+}
+
+
 
 describe('14', function() {
   var getMinLen = require('../14.longest-common-prefix.js').getMinLen;
@@ -53,8 +68,8 @@ describe('18', function() {
     var arr1 = [1, 0, -1, 0, -2, 2];
     var target1 = 0;
     var solution1 = [[-2, -1, 1, 2],
-                    [-2,  0, 0, 2],
-                    [-1,  0, 0, 1]];
+                     [-2,  0, 0, 2],
+                     [-1,  0, 0, 1]];
 
     var arr2 = [-7,-5,0,7,1,1,-10,-2,7,7,-2,-6,0,-10,-5,7,-8,5];
     var target2 = 28;
@@ -331,6 +346,7 @@ describe('hsort', function() {
 
   var heapInsert = require('../algo.heapsort.js').heapInsert;
   var heapExtractTop = require('../algo.heapsort.js').heapExtractTop;
+  var heapExtractTopRemanents = require('../algo.heapsort.js').heapExtractTopRemanents;
   var heapPop = heapExtractTop;
   var heapTop = require('../algo.heapsort.js').heapTop;
 
@@ -343,7 +359,7 @@ describe('hsort', function() {
       parent(4).should.equal(1);
       parent(5).should.equal(2);
       parent(6).should.equal(2);
-    })
+    });
   });
 
   describe ('#left()', function() {
@@ -351,7 +367,7 @@ describe('hsort', function() {
       left(0).should.equal(1);
       left(1).should.equal(3);
       left(2).should.equal(5);
-    })
+    });
   });
 
   describe ('#right()', function() {
@@ -359,7 +375,7 @@ describe('hsort', function() {
       right(0).should.equal(2);
       right(1).should.equal(4);
       right(2).should.equal(6);
-    })
+    });
   });
 
   describe ('#heapInsert()', function() {
@@ -370,7 +386,7 @@ describe('hsort', function() {
       heapInsert(arr, 68);
       arr.toString().should.equal('97,68');
     });
-  })
+  });
 
   describe('#heapExtractTop()', function() {
     it ('should extract top element', function() {
@@ -464,21 +480,88 @@ describe('dynamicProgramming', function() {
   })
 })
 
+describe('pqueue', function() {
+  const { Heap, PQueue, errNoElement } = require('../algo.pqueue.js');
+  const compareNum = (a, b) => {
+    if (a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    else
+      return 0;
+  };
+  it ('should build heap and extract top correctly', () => {
+    const heap = new Heap([2,1,3,7,9,6,4,0], compareNum);
+    heap.extractTop().should.equal(9);
+    heap.extractTop().should.equal(7);
+    heap.extractTop().should.equal(6);
+    heap.extractTop().should.equal(4);
+    heap.extractTop().should.equal(3);
+    heap.extractTop().should.equal(2);
+    heap.extractTop().should.equal(1);
+    heap.extractTop().should.equal(0);
+    heap.arr.length.should.equal(0);
+    checkErrorWithThis(heap.extractTop, heap, [], errNoElement);
+  });
+
+  it('pqueue API should run', () => {
+    const pq = new PQueue([2,1,3,7,9,6,4,0], compareNum);
+    pq.size().should.equal(8);
+    // pq.isEmpty().should.equal(false);
+    pq.peek().should.equal(9);
+    pq.offer(5);
+    pq.peek().should.equal(9);
+    pq.size().should.equal(9);
+    pq.poll().should.equal(9);
+    pq.size().should.equal(8);
+    pq.poll().should.equal(7);
+    pq.poll().should.equal(6);
+    pq.poll().should.equal(5);
+    pq.poll().should.equal(4);
+    pq.poll().should.equal(3);
+    pq.poll().should.equal(2);
+    pq.poll().should.equal(1);
+    pq.poll().should.equal(0);
+    pq.size().should.equal(0);
+  });
+});
+
+describe('LRUCache', () => {
+  const { LRUCache, compareTime } = require('../algo.pqueue.js');
+  it ('LRUCache should put and get items', function() {
+    const cache = new LRUCache(4, compareTime);
+    setTimeout(() => {cache.put(1, 1);}, 200);
+    setTimeout(() => {cache.put(2, 2);}, 400);
+    setTimeout(() => {cache.put(3, 3);}, 600);
+    setTimeout(() => {cache.put(4, 4);}, 800);
+    setTimeout(() => {cache.put(5, 5);}, 1000);
+    setTimeout(() => {cache.tpq.size().should.equal(4);}, 1200);
+    setTimeout(() => {expect(cache.get(1)).to.be.null;}, 1300);
+    setTimeout(() => {cache.tpq.size().should.equal(4);}, 1400);
+    setTimeout(() => {cache.get(2).should.equal(2);}, 1500);
+    setTimeout(() => {cache.tpq.size().should.equal(4);}, 1600);
+    setTimeout(() => {cache.get(3).should.equal(3);}, 1700);
+    setTimeout(() => {cache.get(4).should.equal(4);}, 1800);
+    setTimeout(() => {cache.get(5).should.equal(5);}, 1900);
+    setTimeout(() => {cache.get(2).should.equal(2);}, 2000);
+    setTimeout(() => {cache.put(6, 6);}, 2100);
+    setTimeout(() => {cache.tpq.size().should.equal(4);}, 2200);
+    setTimeout(() => {cache.tpq.size().should.equal(4);}, 2300);
+    setTimeout(() => {expect(cache.get(3)).to.be.null;}, 2400);
+    // setTimeout(() => {console.log('#### cache.tpq.pq.maxHeap', cache.tpq.pq.maxHeap);}, 2500);
+  });
+  
+});
+
 
 describe('ipv4->integer', function() {
 
-  var ipv4 = require('../company.ipv4ToInt.js')
+  var ipv4 = require('../company.ipv4ToInt.js');
   var ipv4ToInt = ipv4.ipv4ToInt;
   var errInt8 = ipv4.errInt8;
   var errSpace = ipv4.errSpace;
   var errChar = ipv4.errChar;
   var errOther = ipv4.errOther;
-
-  var checkError = function(f, s, err) {
-    (function() {
-      f(s)
-    }).should.throw(err);
-  }
 
   describe('#ipv4ToInt()', function() {
 
@@ -490,9 +573,9 @@ describe('ipv4->integer', function() {
     });
 
     it ('invalid ipv4 string should throw', function() {
-      checkError(ipv4ToInt, '255.255.255.256', errInt8);
-      checkError(ipv4ToInt, '256.0.0.0', errInt8);
-      checkError(ipv4ToInt, '1.5.256.1', errInt8);
+      checkError(ipv4ToInt, ['255.255.255.256'], errInt8);
+      checkError(ipv4ToInt, ['256.0.0.0'], errInt8);
+      checkError(ipv4ToInt, ['1.5.256.1'], errInt8);
     });
 
     it ('space between a digit and a dot should return', function() {
@@ -505,34 +588,34 @@ describe('ipv4->integer', function() {
     });
 
     it ('space between two digits should throw', function() {
-      checkError(ipv4ToInt, '1 72.168.5.1', errSpace);
+      checkError(ipv4ToInt, ['1 72.168.5.1'], errSpace);
     });
 
     it ('invalid character should throw', function() {
-      checkError(ipv4ToInt, '0.0.o.0', errChar);
-      checkError(ipv4ToInt, '0.0.-1.0', errChar);
+      checkError(ipv4ToInt, ['0.0.o.0'], errChar);
+      checkError(ipv4ToInt, ['0.0.-1.0'], errChar);
     });
 
     it ('mix errors should throw the first', function() {
-      checkError(ipv4ToInt, '255.255.256.2 55', errInt8);
-      checkError(ipv4ToInt, '1 72.168.5.256', errSpace);
-      checkError(ipv4ToInt, '-1 72.168.5.256', errChar);
+      checkError(ipv4ToInt, ['255.255.256.2 55'], errInt8);
+      checkError(ipv4ToInt, ['1 72.168.5.256'], errSpace);
+      checkError(ipv4ToInt, ['-1 72.168.5.256'], errChar);
     });
 
     it ('mix errors should throw the first', function() {
-      checkError(ipv4ToInt, '255.255.256.2 55', errInt8);
-      checkError(ipv4ToInt, '1 72.168.5.256', errSpace);
-      checkError(ipv4ToInt, '0.0.o.0', errChar);
+      checkError(ipv4ToInt, ['255.255.256.2 55'], errInt8);
+      checkError(ipv4ToInt, ['1 72.168.5.256'], errSpace);
+      checkError(ipv4ToInt, ['0.0.o.0'], errChar);
     });
 
     it ('other invalid string should throw', function() {
-      checkError(ipv4ToInt, '', errOther);
-      checkError(ipv4ToInt, '...', errOther);
-      checkError(ipv4ToInt, '.0.0.0', errOther);
-      checkError(ipv4ToInt, '.0.0.0.0', errOther);
-      checkError(ipv4ToInt, '0.0.0.0.', errOther);
-      checkError(ipv4ToInt, '0.0.0.', errOther);
-      checkError(ipv4ToInt, '0.0. .0', errOther);
+      checkError(ipv4ToInt, [''], errOther);
+      checkError(ipv4ToInt, ['...'], errOther);
+      checkError(ipv4ToInt, ['.0.0.0'], errOther);
+      checkError(ipv4ToInt, ['.0.0.0.0'], errOther);
+      checkError(ipv4ToInt, ['0.0.0.0.'], errOther);
+      checkError(ipv4ToInt, ['0.0.0.'], errOther);
+      checkError(ipv4ToInt, ['0.0. .0'], errOther);
     });
 
   });

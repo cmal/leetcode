@@ -78,10 +78,8 @@ function heapSwimKey(arr, k, v) {
 }
 
 function heapInsert(arr, x) {
-
   arr.push(0);
-
-  heapSwimKey(arr, arr.length, x);
+  heapSwimKey(arr, arr.length - 1, x);
 }
 
 function heapTop(arr) {
@@ -107,6 +105,11 @@ function heapExtractTop(arr) {
 //   heapify(arr, arr.length - 1, 0);
 // }
 
+function heapExtractTopRemanents(arr) {
+  heapExtractTop(arr);
+  return arr;
+}
+
 exports.parent = parent;
 exports.left = left;
 exports.right = right;
@@ -117,3 +120,4 @@ exports.hsort = hsort;
 
 exports.heapPeek = heapTop;
 exports.heapPop = heapExtractTop;
+exports.heapExtractTopRemanents = heapExtractTopRemanents;
