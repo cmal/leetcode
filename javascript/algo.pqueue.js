@@ -219,29 +219,6 @@ class TimePQueue {
   }
 }
 
-
-const arr = [2, 3, 1, 4, 9, 6, 7];
-// const compare = (a, b) => {
-
-//   // a < b for minHeap, sort asc
-//   // a > b for maxHeap, sort desc
-
-//   // for minheap, a < b
-//   // for maxheap, a > b
-
-//   return a > b;
-// };
-
-// const compareTime = (v1, v2) => {
-//   if (v1.ts < v2.ts) {
-//     return 1;
-//   } else if (v1.ts > v2.ts) {
-//     return -1;
-//   } else {
-//     return 0;
-//   }
-// };
-
 const compareTime = (v1, v2) => {
   if (v1[0] < v2[0]) {
     return 1;
@@ -251,37 +228,6 @@ const compareTime = (v1, v2) => {
     return 0;
   }
 };
-
-
-// class LRUCache {
-//   constructor(size, compare) {
-//     this.size = size;
-//     this.hm = {};
-//     this.pq = new PQueue([], compare); // TODO arr->size
-//   }
-  
-//   put(k, v) {
-//     // console.log('size', this.pq.size());
-//     if (this.pq.size() == this.size) {
-//       const { ts, k } = this.pq.poll();
-//       delete this.hm[k];
-//     }
-
-//     const ts = +new Date();
-//     this.pq.offer({ts, k});
-//     this.hm[k] = v;
-//   }
-
-//   get(k) {
-//     if (this.hm.hasOwnProperty(k)) {
-//       const v = this.hm[k];
-//       const ts = +new Date();
-//       this.pq.update({ ts, k });
-//       return v;
-//     }
-//     return null;
-//   }
-// }
 
 class LRUCache {
   constructor(size, compare) {
@@ -309,46 +255,6 @@ class LRUCache {
     return null;
   }
 }
-
-
-
-// const cache = new LRUCache(4, compareTime);
-
-// cache.pq.maxHeap = new Heap([
-//   { ts: +new Date() - 4, k: 'a' },
-//   { ts: +new Date() - 3, k: 'b' },
-//   { ts: +new Date() - 2, k: 'c' },
-//   { ts: +new Date() - 1, k: 'd' }
-// ], compareTime);
-
-// // cache.put('b', 2)
-// // cache.put('c', 3)
-// // cache.put('d', 4)
-// // console.log(cache.pq.maxHeap)
-// cache.put('e', 5)
-// // // cache.put('f', 6)
-// // // cache.put('g', 7)
-// // // cache.put('h', 8)
-// // // cache.put('i', 9)
-// // // cache.put('j', 10)
-// // // cache.put('k', 11)
-// // // cache.put('l', 12)
-// // console.log(cache.get('d'))
-// // cache.put('a', 13)
-// // cache.put('b', 14)
-// // console.log(cache.get('d'))
-// console.log(cache.pq.maxHeap)
-// const heap = new Heap(
-//   [2,1,3,7,9,6,4,0],
-//   (a, b) => {
-//     if (a > b)
-//       return 1;
-//     else if (a < b)
-//       return -1;
-//     else
-//       return 0;
-//   });
-
 
 module.exports = {
   Heap,
