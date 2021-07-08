@@ -120,15 +120,6 @@ class Heap {
     return this.arr[0];
   }
 
-  // extractTop() {
-  //   if (this.arr.length == 1) {
-  //     return this.arr.pop();
-  //   }
-  //   let top = this.arr[0];
-  //   this.arr[0] = this.arr.pop();
-  //   this.heapify(this.arr.length - 1, 0);
-  //   return top;
-  // }
   extractTop() {
     return this.delete(0);
   }
@@ -136,15 +127,6 @@ class Heap {
   size() {
     return this.arr.length;
   }
-
-// function heapExtractTopRemanents(arr) {
-//   if (arr.length == 1) {
-//     arr.pop();
-//   }
-//   arr[0] = arr[arr.length -1];
-//   arr.pop();
-//   heapify(arr, arr.length - 1, 0);
-// }
 
 }
 
@@ -157,10 +139,6 @@ class PQueue { // priority queue
   size() {
     return this.maxHeap.size();
   }
-
-  // isEmpty() {
-  //   return this.maxHeap.isEmpty();
-  // }
 
   delete(x, compare) {
     const k = this.maxHeap.findK(x, compare);
@@ -179,20 +157,6 @@ class PQueue { // priority queue
     return this.maxHeap.extractTop();
   }
 
-  // update(k, v) {
-  //   this.maxHeap.swimKey(k, v);
-  // }
-  // update(newKV) {
-  //   // console.log(this.maxHeap.arr)
-  //   // console.log('newkv', newKV);
-  //   const { ts, v } = newKV;
-  //   const k = this.maxHeap.findK(newKV, (a, b) => a.v == b.v);
-  //   if (k == null) {
-  //     throw errNotFound;
-  //   }
-  //   this.maxHeap.delete(k);
-  //   this.maxHeap.insert(newKV);
-  // }
 }
 
 class TimePQueue {
